@@ -19,7 +19,7 @@ void *findMin(void *array_ptr)
 	int i;
 	int *elements=(int*)array_ptr;
 	Results.min=elements[0];
-	for(i = 0;i<numOfElements;i++)
+	for(i=0;i<numOfElements;i++)
 	{
 		if(elements[i]<Results.min)
 		{
@@ -33,7 +33,7 @@ void *findMax(void *array_ptr)
 {
 	int i;
 	int *elements=(int*)array_ptr;
-	for(i = 0;i<numOfElements;i++)
+	for(i=0;i<numOfElements;i++)
 	{
 		if(elements[i]>Results.max)
 		{
@@ -47,7 +47,7 @@ void *findAverage(void *array_ptr)
 {
 	int i;
 	int *elements=(int*)array_ptr;
-	for(i = 0;i<numOfElements;i++)
+	for(i=0;i<numOfElements;i++)
 	{
 		Results.average+=elements[i];
 	}
@@ -68,9 +68,9 @@ int getArrayInput(int n,int *array_ptr)
 				exit(EXIT_FAILURE);
 			}
 
-    		if (input>=0)
+    		if(input>=0)
 			{
-       		 	if (numberOfElements==n)
+       		 	if(numberOfElements==n)
 			{
           	  	  n += 1;
           		  array_ptr=realloc(array_ptr,n *sizeof(int));
@@ -90,7 +90,7 @@ void joinThreads(int numberOfThreads)
 	int s;
 	while(numberOfThreads>=0)
 	{
-		s =pthread_join(thread[numberOfThreads],NULL);
+		s=pthread_join(thread[numberOfThreads],NULL);
 		 if (s!=0)
 	     {
 			handle_error_en(s,"pthread_create");
@@ -102,7 +102,7 @@ void createThreads(int *array_ptr)
 {
 	int s;
  	s=pthread_create(&thread[0],NULL,findMin,(void *)array_ptr);
-	 if (s!=0)
+	 if(s!=0)
 	 	 {
 			handle_error_en(s,"pthread_create");
 		 }
@@ -113,7 +113,7 @@ void createThreads(int *array_ptr)
             handle_error_en(s,"pthread_create");
        	 }
         	 running_threads+=1;
-	 s = pthread_create(&thread[2], NULL, findAverage, (void *)array_ptr);
+	 s=pthread_create(&thread[2],NULL,findAverage,(void *)array_ptr);
 		 if (s!=0)
 		 {
            handle_error_en(s,"pthread_create");
@@ -123,8 +123,8 @@ void createThreads(int *array_ptr)
 int main()
 {
 	int n=1;
-	int *array_ptr = malloc(n *sizeof(int));
-		 numOfElements = getArrayInput(n,array_ptr);
+	int *array_ptr=malloc(n *sizeof(int));
+		 numOfElements=getArrayInput(n,array_ptr);
 		 createThreads(array_ptr);
 	    	while(running_threads>0)
 			{
