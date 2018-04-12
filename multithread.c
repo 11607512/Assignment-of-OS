@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <errno.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<pthread.h>
+#include<errno.h>
 #define handle_error_en(en, msg)\
         do{ errno=en; perror(msg);exit(EXIT_FAILURE); }while (0)
 volatile int running_threads=0;
@@ -72,7 +72,7 @@ int getArrayInput(int n,int *array_ptr)
 			{
        		 	if(numberOfElements==n)
 			{
-          	  	  n += 1;
+          	  	  n+=1;
           		  array_ptr=realloc(array_ptr,n *sizeof(int));
        		}
         		array_ptr[numberOfElements++]=input;
@@ -106,7 +106,7 @@ void createThreads(int *array_ptr)
 	 	 {
 			handle_error_en(s,"pthread_create");
 		 }
-		 	running_threads += 1;
+		 	running_threads+=1;
 	 s=pthread_create(&thread[1],NULL,findMax,(void *)array_ptr);
 		 if (s!=0)
 		 {
