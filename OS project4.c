@@ -17,9 +17,9 @@ int main()
 	pid=fork();
 	if(pid==0)
 	{
+		printf("First Process Start Executing...\n");
 		char s[100];
-		/* child process */
-		printf("Enter string\n");
+		printf("Enter String : ");
 		gets(s);
 		int i;
 		for(i = 0; s[i] != '\0'; i++);
@@ -28,9 +28,8 @@ int main()
 	}
 	else
 	{
-		/* parent process */
 		wait();
-		printf("parent process\n");
+		printf("Second Process Start Executing...\n");
 		close(mypipefd[1]);
 		read(mypipefd[0],buf,100);
 		int i;
@@ -45,6 +44,6 @@ int main()
      		   buf[i]-=32;
      		}
    		 }
-		printf("buf : %s\n",buf);
+		printf("After Reverses The Case Of Each Character : %s\n",buf);
 	}
 }
