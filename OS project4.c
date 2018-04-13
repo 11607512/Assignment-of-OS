@@ -17,7 +17,7 @@ int main()
 	if(pid==0)
 	{
 		char s[100];
-		printf("Enter string\n");
+		printf("Enter string : \n");
 		scanf("%s",&s); 
 		int i;
 		for(i=0;s[i]!='\0';i++);
@@ -26,7 +26,7 @@ int main()
 	}
 	else
 	{
-		printf("parent process\n");
+		printf("parent process : \n");
 		close(mypipefd[1]);
 		read(mypipefd[0],buf,15);	
 		int i;
