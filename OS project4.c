@@ -1,5 +1,6 @@
 #include<unistd.h>
 #include<stdlib.h>
+#include<string.h>
 #include<stdio.h>
 int main()
 {
@@ -17,20 +18,23 @@ int main()
 	if(pid==0)
 	{
 		char s[100];
-		printf("Enter string : \n");
-		scanf("%s",&s); 
+		/* child process */
+		printf("Enter string\n");
+		gets(s);
 		int i;
-		for(i=0;s[i]!='\0';i++);
+		for(i = 0; s[i] != '\0'; i++);
 		close(mypipefd[0]);
-		write(mypipefd[1],s,i);
+		write(mypipefd[1], s, i);
 	}
 	else
 	{
-		printf("parent process : \n");
+		/* parent process */
+		wait();
+		printf("parent process\n");
 		close(mypipefd[1]);
-		read(mypipefd[0],buf,15);	
+		read(mypipefd[0],buf,100);
 		int i;
-		for(i=0;buf[i]!='\0';i++) 
+		for(i=0;buf[i]!='\0';i++)
 	    {
 	        if(buf[i]>='A'&&buf[i]<='Z')
 			{
@@ -41,6 +45,6 @@ int main()
      		   buf[i]-=32;
      		}
    		 }
-		printf("buf:%s\n",buf);
+		printf("buf : %s\n",buf);
 	}
 }
