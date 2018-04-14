@@ -61,10 +61,10 @@ int getArrayInput(int n,int *array_ptr)
 		int numberOfElements=0;
 		for(;;)
 		{
-    		printf("Enter a positive Integer value :\nNegative Number to Stop :\n-\n");
+    		printf("Enter A Positive Integer Value...:\nNegative Number To Stop...:\n-\n");
 			if (scanf("%d",&input)!=1)
 			{
-				printf("\nOops that wasn't an Integer\nlets try filling the array again\nRemember INTEGERS only!\n");
+				printf("\nOops That Wasn't An Integer\nLets Try Filling The Array Again\nRemember INTEGERS Only!\n");
 				exit(EXIT_FAILURE);
 			}
 
@@ -78,7 +78,7 @@ int getArrayInput(int n,int *array_ptr)
         		array_ptr[numberOfElements++]=input;
     		} else 
 				{
-       		 printf("\nNumber of Integers: %d\n",numberOfElements);
+       		 printf("\nNumber Of Integers: %d\n",numberOfElements);
        		 break;
    				 }
 			}
@@ -131,6 +131,6 @@ int main()
 				sleep(1);
 			}
 		joinThreads(2);
-		printf("\nThe average No. is: %d\nThe maximum No. is: %d\nThe minimum No. is: %d\n",Results.average, Results.max, Results.min);
+		printf("\nThe Average No. is: %d\nThe maximum No. is: %d\nThe minimum No. is: %d\n",Results.average, Results.max, Results.min);
 	return(0);
 }
