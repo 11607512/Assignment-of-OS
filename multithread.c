@@ -67,23 +67,22 @@ int getArrayInput(int n,int *array_ptr)
 				printf("\nOops That Wasn't An Integer\nLets Try Filling The Array Again\nRemember INTEGERS Only!\n");
 				exit(EXIT_FAILURE);
 			}
-
     		if(input>=0)
-			{
+		{
        		 	if(numberOfElements==n)
 			{
           	  	  n+=1;
           		  array_ptr=realloc(array_ptr,n *sizeof(int));
-       		}
+       		        }
         		array_ptr[numberOfElements++]=input;
     		} else 
-				{
+			{
        		 printf("\nNumber Of Integers: %d\n",numberOfElements);
        		 break;
-   				 }
-			}
+   			}
+	        }
 	return numberOfElements;
-		}
+}
 void joinThreads(int numberOfThreads)
 {
 	int i;
@@ -92,7 +91,7 @@ void joinThreads(int numberOfThreads)
 	{
 		s=pthread_join(thread[numberOfThreads],NULL);
 		 if (s!=0)
-	     {
+	         {
 			handle_error_en(s,"pthread_create");
 		 }
 		 numberOfThreads--;
@@ -102,22 +101,22 @@ void createThreads(int *array_ptr)
 {
 	int s;
  	s=pthread_create(&thread[0],NULL,findMin,(void *)array_ptr);
-	 if(s!=0)
+	         if(s!=0)
 	 	 {
-			handle_error_en(s,"pthread_create");
+	    handle_error_en(s,"pthread_create");
 		 }
 		 	running_threads+=1;
 	 s=pthread_create(&thread[1],NULL,findMax,(void *)array_ptr);
 		 if (s!=0)
 		 {
             handle_error_en(s,"pthread_create");
-       	 }
+       	         }
         	 running_threads+=1;
 	 s=pthread_create(&thread[2],NULL,findAverage,(void *)array_ptr);
 		 if (s!=0)
 		 {
            handle_error_en(s,"pthread_create");
-       	 }
+       	         }
 			running_threads+=1;
 }
 int main()
